@@ -1,0 +1,14 @@
+{%extends 'base_generic.html'%}
+
+{% block content %}
+<h1>Local Library</h1>
+
+<h2>Dynamic Content</h2>
+<p><b>Books: </b>{{books_count}}</p>
+<p><b>Authors: </b>{{authors_count}}</p>
+<p><b>Book Copies: </b>{{books_instance_count}}</p>
+<p><b>Available Book Copies: </b>{{books_instance_available_count}}</p>
+
+<p>You visited this page {{visits_count}} {%if visits_count == 1%}time{%else%}times{%endif%}</p>
+
+{%endblock%}
