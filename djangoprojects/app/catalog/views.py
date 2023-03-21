@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import *
 
@@ -39,4 +40,14 @@ class BookDetailView(generic.DetailView):
     model = Book
 
     paginate_by = 4
+
+
+class BookinstanceBorrowedListView(LoginRequiredMixin,generic.ListView):
+    model = BookInstance
+    paginate_by = 5
+    template_name = 'catalog/bookinstance_borrowed.html'
+
+    def get_queryset(self):
+        return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
+
 
