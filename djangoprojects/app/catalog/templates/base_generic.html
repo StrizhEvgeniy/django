@@ -20,6 +20,9 @@
                         User: {{user.get_username}}
                     </li>
                     <li>
+                        <a href="{%url 'borrowed'%}">My books</a>
+                    </li>
+                    <li>
                         <a href="{%url 'logout'%}">Log out</a>
                     </li>
                     {%else%}

@@ -1,0 +1,17 @@
+{%extends 'base_generic.html'%}
+
+{%block content%}
+<h2>My books: </h2>
+{%if bookinstance_list%}
+<ul>
+    {%for inst in bookinstance_list%}
+    <li class = "{%if inst.is_overdue%}text-danger{%endif%}">
+        <a href="{%url 'book-detail' inst.book.pk%}">{{inst.book.title}}</a> ({{inst.due_back}})
+    </li>
+    {%endfor%}
+</ul>
+{%else%}
+<p>There are no books</p>
+{%endif%}
+
+{%endblock%}
